@@ -89,4 +89,7 @@ else:
     if os.system('for i in {1..20}; do echo $((i * 5)); sleep 0.1; done | zenity --progress --title="Starting..." --text="Wait for start" --cancel-label "Open Config file" --ok-label "" --auto-close --auto-kill') != 0:
         os.system('xdg-open zelda3.ini')
         quit()
+
+if os.environ.get('XDG_SESSION_TYPE') == "wayland":
+    os.environ['SDL_VIDEODRIVER'] = "wayland"
 os.system('zelda3')

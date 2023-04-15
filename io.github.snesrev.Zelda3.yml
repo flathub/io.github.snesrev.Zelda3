@@ -7,7 +7,8 @@ command: zelda3.py
 finish-args:
  - --device=all
  - --share=ipc
- - --socket=x11
+ - --socket=wayland
+ - --socket=fallback-x11
  - --socket=pulseaudio
 modules:
  - name: python3-pillow
