@@ -8,7 +8,7 @@ finish-args:
  - --device=all
  - --share=ipc
  - --socket=wayland
- - --socket=x11
+ - --socket=fallback-x11
  - --socket=pulseaudio
 modules:
  - name: python3-pillow
