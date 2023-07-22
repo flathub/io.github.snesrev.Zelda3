@@ -78,7 +78,8 @@ if not os.path.isfile('zelda3.ini'):
     os.system('sed -i "s/ExtendedAspectRatio = 4:3/ExtendedAspectRatio = 16:9/g" zelda3.ini')
     os.system('sed -i "s/Fullscreen = 0/Fullscreen = 1/g" zelda3.ini')
     os.system('sed -i "s/OutputMethod = SDL/OutputMethod = OpenGL/g" zelda3.ini')
-    os.system('sed -i "s/Shader =/Shader = shader\/xbrz\/shaders\/xbrz-freescale.glsl/g" zelda3.ini')
+    if os.system('zenity --question --text "Activate filter?" --cancel-label "Yes (xBRZ filter)" --ok-label "No (pixelated look)"') != 0:
+        os.system('sed -i "s/Shader =/Shader = shader\/xbrz\/shaders\/xbrz-freescale.glsl/g" zelda3.ini')
     if lang != None: os.system('sed -i "s/# Language = de/Language = ' + lang + '/g" zelda3.ini')
     shutil.rmtree('src/')
     
