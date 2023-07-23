@@ -5,7 +5,7 @@
   <project_license>MIT</project_license><!-- also valid for the zelda.py -->
   <name>zelda3</name>
   <developer_name>snesrev</developer_name>
-  <summary>Zelda3 is a reverse engineered clone of Zelda - A Link to the Past.</summary>
+  <summary>Zelda3 is a reverse engineered clone of Zelda - A Link to the Past</summary>
   <description>
     <p>Zelda3 is a reverse engineered clone of Zelda - A Link to the Past.</p>
     <p>A bunch of features have been added that are not supported by the original game.</p>
