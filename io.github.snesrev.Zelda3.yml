@@ -48,7 +48,7 @@ modules:
    sources:
     - type: git
       url: https://github.com/snesrev/zelda3.git
-      commit: a23632ae6cec5474ec77deb6e21e08ccbf913d8f
+      commit: fbbb3f967a51fafe642e6140d0753979e73b4090
     - type: git
       url: https://github.com/libretro/glsl-shaders.git
       commit: 799aa9e4d567db0874111d2aed9c9b9058a19641
