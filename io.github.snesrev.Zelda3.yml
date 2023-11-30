@@ -32,7 +32,7 @@ modules:
  - name: zelda3
    buildsystem: simple
    build-commands:
-    - sed -i '/(TARGET_EXEC) tables\/zelda3_assets.dat/d' Makefile
+    - sed -i '/(TARGET_EXEC) zelda3_assets.dat/d' Makefile
     - make
    post-install:
     - install -Dm755 zelda3 ${FLATPAK_DEST}/bin/zelda3
