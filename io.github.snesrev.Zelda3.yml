@@ -32,7 +32,7 @@ modules:
  - name: zelda3
    buildsystem: simple
    build-commands:
-    - sed -i '/(TARGET_EXEC) tables\/zelda3_assets.dat/d' Makefile
+    - sed -i '/(TARGET_EXEC) zelda3_assets.dat/d' Makefile
     - make
    post-install:
     - install -Dm755 zelda3 ${FLATPAK_DEST}/bin/zelda3
@@ -48,7 +48,7 @@ modules:
    sources:
     - type: git
       url: https://github.com/snesrev/zelda3.git
-      commit: a23632ae6cec5474ec77deb6e21e08ccbf913d8f
+      commit: fbbb3f967a51fafe642e6140d0753979e73b4090
     - type: git
       url: https://github.com/libretro/glsl-shaders.git
       commit: 799aa9e4d567db0874111d2aed9c9b9058a19641
