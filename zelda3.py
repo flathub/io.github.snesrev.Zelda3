@@ -11,7 +11,7 @@ os.chdir(dir_home)
 if not os.path.isfile('zelda3.ini'):
     shutil.copytree('/app/bin/src', 'src', dirs_exist_ok=True)
     shutil.copytree('/app/bin/src/shader', 'shader', dirs_exist_ok=True)
-    from src.tables.util import ZELDA3_SHA1_US, ZELDA3_SHA1
+    from src.assets.util import ZELDA3_SHA1_US, ZELDA3_SHA1
     
     #
     # english ROM installation
@@ -27,13 +27,13 @@ if not os.path.isfile('zelda3.ini'):
         sha1 = hashlib.sha1()
         sha1.update(f.read())
         if sha1.hexdigest().upper() == ZELDA3_SHA1_US:
-            shutil.copyfile(file, 'src/tables/zelda3.sfc')
-            os.chdir(dir_home + 'src/tables/')
+            shutil.copyfile(file, 'src/zelda3.sfc')
+            os.chdir(dir_home + 'src/assets/')
             os.popen('python3 restool.py --extract-from-rom -r zelda3.sfc | zenity --progress --title="Extracting" --text="Extracting ROM" --pulsate --auto-close --auto-kill').read()
-            if not os.path.isfile('zelda3_assets.dat'):
+            if not os.path.isfile('../zelda3_assets.dat'):
                 quit()
             os.chdir(dir_home)
-            shutil.copyfile('src/tables/zelda3_assets.dat', 'zelda3_assets.dat')
+            shutil.copyfile('src/zelda3_assets.dat', 'zelda3_assets.dat')
         else:
             os.popen('zenity --error --text "No supported ROM!\nEnglish ROM needed\n\nSHA1 needed: ' + ZELDA3_SHA1_US + '\nSHA1 got: ' + sha1.hexdigest().upper()  + '"').read()
             quit()
@@ -57,15 +57,15 @@ if not os.path.isfile('zelda3.ini'):
             
             if sha1.hexdigest().upper() in ZELDA3_SHA1.keys() and sha1.hexdigest().upper() != ZELDA3_SHA1_US:
                 lang = ZELDA3_SHA1[sha1.hexdigest().upper()][0]
-                shutil.copyfile(file, 'src/tables/translation.sfc')
-                os.chdir(dir_home + 'src/tables/')
+                shutil.copyfile(file, 'src/assets/translation.sfc')
+                os.chdir(dir_home + 'src/assets/')
                 os.remove('zelda3_assets.dat')
                 os.popen('python restool.py --extract-dialogue -r translation.sfc | zenity --progress --title="Extracting" --text="Extracting ROM" --pulsate --auto-close --auto-kill').read()
                 os.popen('python restool.py --languages=' + lang + '| zenity --progress --title="Extracting" --text="Extracting ROM" --pulsate --auto-close --auto-kill').read()
                 if not os.path.isfile('zelda3_assets.dat'):
                     quit()
                 os.chdir(dir_home)
-                shutil.copyfile('src/tables/zelda3_assets.dat', 'zelda3_assets.dat')
+                shutil.copyfile('src/assets/zelda3_assets.dat', 'zelda3_assets.dat')
             else:
                 os.popen('zenity --error --text "No supported ROM!\n\nSHA1 got: ' + sha1.hexdigest().upper()  + '"').read()
                 quit()
