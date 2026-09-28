@@ -1,0 +1,46 @@
+diff --git a/snes/snes.c b/snes/snes.c
+index e52620c..29e0a3f 100644
+--- a/snes/snes.c
++++ b/snes/snes.c
+@@ -30,7 +30,7 @@ Snes* snes_init(uint8_t *ram) {
+   snes->cpu = cpu_init(snes, 0);
+   snes->apu = apu_init();
+   snes->dma = dma_init(snes);
+-  snes->ppu = ppu_init(snes);
++  snes->ppu = ppu_init();//snes);
+   snes->cart = cart_init(snes);
+   snes->input1 = input_init(snes);
+   snes->input2 = input_init(snes);
+diff --git a/src/messaging.h b/src/messaging.h
+index 817e22c..385c9e8 100644
+--- a/src/messaging.h
++++ b/src/messaging.h
+@@ -107,7 +107,7 @@ void RenderText_Draw_BorderIncremental();
+ void RenderText_Draw_CharacterTilemap();
+ void RenderText_Draw_MessageCharacters();
+ void RenderText_Draw_Finish();
+-void VWF_RenderSingle();
++void VWF_RenderSingle(int c);
+ void RenderText_Draw_Choose2LowOr3();
+ void RenderText_Draw_ChooseItem();
+ void RenderText_FindYItem_Previous();
+diff --git a/src/zelda_rtl.c b/src/zelda_rtl.c
+index 1c74116..c920d91 100644
+--- a/src/zelda_rtl.c
++++ b/src/zelda_rtl.c
+@@ -264,7 +264,7 @@ static void ZeldaRunGameLoop() {
+ 
+ void ZeldaInitialize() {
+   g_zenv.dma = dma_init(NULL);
+-  g_zenv.ppu = ppu_init(NULL);
++  g_zenv.ppu = ppu_init();//NULL);
+   g_zenv.ram = g_ram;
+   g_zenv.sram = (uint8*)calloc(8192, 1);
+   g_zenv.vram = g_zenv.ppu->vram;
+@@ -887,4 +887,4 @@ void ZeldaWriteSram() {
+   } else {
+     fprintf(stderr, "Unable to write saves/sram.dat\n");
+   }
+-}
+\ No newline at end of file
++}
